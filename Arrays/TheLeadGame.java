@@ -13,17 +13,21 @@ class TheLeadGame {
         int diff = 0;
         int lead = 0;
         int winner = 0;
+        int sum1 = 0;
+        int sum2 = 0;
         for (int i = 0; i < t; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
+            sum1 = sum1 + a;
+            sum2 = sum2 + b;
             if (a > b) {
-                diff = a - b;
+                diff = sum1 - sum2;
                 if (diff > lead) {
                     lead = diff;
                     winner = 1;
                 }
             } else {
-                diff = b - a;
+                diff = sum2 - sum1;
                 if (diff > lead) {
                     lead = diff;
                     winner = 2;
