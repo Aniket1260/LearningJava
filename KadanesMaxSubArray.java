@@ -1,0 +1,21 @@
+import java.util.*;
+
+class KadanesMaxSubArray {
+    public static void kadanes(int numbers[]) {
+        int cs = 0;
+        int ms = Integer.MIN_VALUE;
+        for (int i = 0; i < numbers.length; i++) {
+            cs = numbers[i] + cs;
+            if (cs < 0) {
+                cs = 0;
+            }
+            ms = Math.max(ms, cs);
+        }
+        System.out.println("Maximum sum " + ms);
+    }
+
+    public static void main(String[] args) {
+        int numbers[] = { -2, -3, -1, -4, -5, -7, 8, -10 };
+        kadanes(numbers);
+    }
+}
