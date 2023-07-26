@@ -12,16 +12,16 @@ class ProblemsinToDoList {
         int n = sc.nextInt();
         int remove = 0;
         for (int i = 0; i < n; i++) {
+            remove = 0;
             int num = sc.nextInt();
             int numbers[] = new int[num];
             for (int j = 0; j < numbers.length; j++) {
                 numbers[j] = sc.nextInt();
                 if (numbers[j] >= 1000) {
                     remove++;
-                    System.out.println(remove);
-                    continue;
                 }
             }
+            System.out.println(remove);
         }
 
     }
