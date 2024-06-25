@@ -129,6 +129,35 @@ public class BinaryTree {
 			}
 		}
 	}
+	public int findMax(TreeNode root) {
+		if(root == null) {
+			return Integer.MIN_VALUE;
+		}
+		int result = root.data;
+		int left = findMax(root.left);
+		int right = findMax(root.right);
+		if(left > result) {
+			result = left;
+		}
+		if(right > result) {
+			result = right;
+		}
+		return result;
+	}
+	public boolean isValid(TreeNode root,long min,long max) {
+		if(root == null) {
+			return true;
+		}
+		if(root.data<= min || root.data>=max) {
+			return false;
+		}
+		boolean left = isValid(root.left,min,root.data);
+		if(left) {
+			boolean right = isValid(root.right,root.data,max);
+			return right;
+		}
+		return false;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BinaryTree bt = new BinaryTree();
@@ -142,7 +171,10 @@ public class BinaryTree {
 //		bt.postOrderRecursive(bt.root);
 //		System.out.println();
 //		bt.postOrderIterative();
-		bt.levelOrderTraversal();
+//		bt.levelOrderTraversal();
+		long min = Long.MIN_VALUE;
+		long max = Long.MAX_VALUE;
+		System.out.print(bt.isValid(bt.root, min, max));
 	}
 
 }
